@@ -30,6 +30,11 @@
    GLOBAL / TYPO
    -------------------------- */
 
+body {
+  background-color: hotpink !important;
+}
+
+
 /* Netflix Sans Einbindung */
 @font-face {
   font-family: "Netflix Sans"; font-weight: 100;
