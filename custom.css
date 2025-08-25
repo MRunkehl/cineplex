@@ -1,0 +1,436 @@
+/* =========================================================
+   Jellyflix (Netflix-like) — Port für Jellyfin 10.10.7
+   Ziel: Kompatibel mit 10.10.x (neue Struktur) + Fallbacks
+   Autor: Maverick Runkehl
+   ========================================================= */
+
+/* --------------------------
+   Design-Variablen
+   -------------------------- */
+:root {
+  --accent: #e50914;
+  --deftraback: rgba(229, 9, 20, 0.2);
+  --rounding: 6px;
+
+  /* Zusätzliche systemweite Farben (10.10 nutzt häufig vars) */
+  --theme-accent: var(--accent);
+  --theme-primary: #ffffff;
+  --theme-text: #e5e5e5;
+  --theme-muted: #a3a3a3;
+  --theme-bg: #181818;
+  --theme-elev: rgba(0,0,0,.25);
+  --theme-elev-strong: rgba(0,0,0,.75);
+}
+
+/* Highlight / Selection */
+::-moz-selection { background: var(--accent); text-shadow: none; }
+::selection       { background: var(--accent); text-shadow: none; }
+
+/* --------------------------
+   GLOBAL / TYPO
+   -------------------------- */
+
+/* Netflix Sans Einbindung */
+@font-face {
+  font-family: "Netflix Sans"; font-weight: 100;
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff2) format("woff2"),
+       url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff) format("woff");
+}
+@font-face {
+  font-family: "Netflix Sans"; font-weight: 300;
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff2) format("woff2"),
+       url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff) format("woff");
+}
+@font-face {
+  font-family: "Netflix Sans"; font-weight: 400;
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2) format("woff2"),
+       url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff) format("woff");
+}
+@font-face {
+  font-family: "Netflix Sans"; font-weight: 700;
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff2) format("woff2"),
+       url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff) format("woff");
+}
+@font-face {
+  font-family: "Netflix Sans"; font-weight: 800;
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff2) format("woff2"),
+       url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff) format("woff");
+}
+@font-face {
+  font-family: "Netflix Sans"; font-weight: 900;
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff2) format("woff2"),
+       url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff) format("woff");
+}
+
+body, h1, h2, h3, h4 {
+  font-family: "Netflix Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif !important;
+  color: var(--theme-text);
+  background: var(--theme-bg);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar-thumb { background: var(--accent) !important; }
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece { background: transparent !important; }
+
+/* --------------------------
+   HEADER / NAV / TOPBAR
+   -------------------------- */
+
+/* neue 10.10 Header-Hintergründe möglichst transparent */
+.skinHeader-withBackground,
+.skinHeader.focuscontainer-x.skinHeader-withBackground.skinHeader-blurred,
+.skinHeader.focuscontainer-x.skinHeader-withBackground.skinHeader-blurred.noHomeButtonHeader {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+/* Tabs */
+.headerTabs.sectionTabs {
+  -webkit-text-size-adjust: 130%;
+  text-size-adjust: 130%;
+  font-size: 130%;
+}
+/* .emby-tab-button,
+.jf-tab,
+.jf-tabs button {
+  padding: 1.2em 1.4em;
+  border-radius: var(--rounding);
+  text-shadow: 0 0 5px #000;
+} */
+.emby-tab-button:hover,
+.jf-tab:hover,
+.jf-tab[aria-selected="true"],
+button.emby-tab-button.emby-button.emby-tab-button-active:hover {
+  color: var(--accent) !important;
+}
+
+/* Seitencontainer (neues Layout) */
+.page, .jf-page, div[data-role="page"] {
+  background: var(--theme-bg);
+  padding-bottom: 0 !important;
+}
+
+/* --------------------------
+   BUTTONS / INPUTS
+   -------------------------- */
+
+/* .jf-btn, .emby-button, .button-flat, .paper-icon-button-light {
+  border-radius: var(--rounding) !important;
+} */
+.jf-btn--raised, .raised, a.raised.homeLibraryButton.emby-button {
+  background: var(--accent) !important;
+  /*border-radius: var(--rounding) !important;
+  box-shadow: 0 0 9px #000;*/
+}
+.paper-icon-button-light:hover:not(:disabled),
+.button-flat:hover {
+  color: var(--accent) !important;
+  background-color: #2020208c;
+/*   box-shadow: 0 0 15px -2px black; */
+}
+
+/* Inputs */
+/* .jf-input, .emby-input, .emby-textarea, input, textarea, select, .emby-select-withcolor {
+  color: inherit;
+  border: .07em solid var(--accent) !important;
+  border-radius: var(--rounding) !important;
+  background: rgba(0,0,0,.2) !important;
+  box-shadow: 0 0 8px 0px black !important;
+  text-shadow: 0 0 5px black;
+  backdrop-filter: blur(60px);
+  -webkit-backdrop-filter: blur(60px);
+} */
+/* .emby-input:focus, .emby-textarea:focus, .jf-input:focus { border-color: var(--accent) !important; } */
+
+/* Checkboxen / Toggles / Progress */
+.emby-checkbox:checked + span + .checkboxOutline,
+.itemProgressBarForeground,
+.mdl-slider-background-lower,
+.jf-toggle[aria-checked="true"] {
+  background-color: var(--accent) !important;
+}
+.emby-checkbox:checked + span + .checkboxOutline { border-color: var(--accent) !important; }
+
+/* Slider Thumb */
+/* .mdl-slider::-webkit-slider-thumb { background: var(--accent); border-radius: var(--rounding); }
+.mdl-slider::-moz-range-thumb,
+.mdl-slider::-ms-thumb { background: var(--accent); border-radius: var(--rounding); } */
+
+/* --------------------------
+   CARDS / GRIDS / LISTEN
+   -------------------------- */
+
+/* Generische Card-Container (neu & alt) */
+/* .jf-card, .card, .cardBox, .visualCardBox, .cardContent, .cardImageContainer, .cardPadder {
+  border-radius: var(--rounding) !important;
+  overflow: hidden;
+  transition: all .15s ease;
+} */
+
+/* Card-Hover */
+/* .card:hover > .cardBox, .card:focus > .cardBox,
+.jf-card:hover, .jf-card:focus {
+  box-shadow: 0 3px 9px 0px black;
+  background: var(--theme-elev-strong);
+} */
+
+/* Kacheln etwas dunkler + Shadow */
+/* .cardBox.cardBox-bottompadded { background: rgba(0,0,0,.25); }
+.cardBox { box-shadow: 0 0 9px 0 rgb(0 0 0); } */
+
+/* Poster/Bilder zoomen beim Hover */
+.cardImageContainer { background-size: 105%; transition: all .15s; }
+.card:hover .cardImageContainer, .card:focus .cardImageContainer { background-size: 130%; }
+
+/* „Gespielt“ / Zähler-Indikatoren */
+.playedIndicator, .countIndicator, .fullSyncIndicator {
+  border-radius: 5px; box-shadow: 0 0 15px -2px black;
+  background: #ffffffad; color: var(--accent);
+}
+.playedIndicator { background: var(--accent); color: #fff; }
+
+/* Standard-CardText/Trenner */
+/* .mediaInfoItem { position: relative; margin-right: 16px; font-weight: 100; }
+.mediaInfoItem:not(:last-child)::after {
+  content: ""; width: 1px; height: 100%; background: #7c7c7cee;
+  position: absolute; right: -9px; border-radius: 10px;
+} */
+
+/* --------------------------
+   STARTSEITE / „My Media“
+   -------------------------- */
+#indexPage a.raised.homeLibraryButton.emby-button {
+  background: rgba(0,0,0,.25) !important; box-shadow: 0 0 9px black; transition: all .2s;
+}
+/* #indexPage a.raised.homeLibraryButton.emby-button:hover {
+  border-radius: 10px !important; box-shadow: 0 3px 9px black; background: rgba(0,0,0,.75) !important;
+} */
+/* .section0 .sectionTitle { padding-top: 60px !important; }
+.section0 button.itemAction.textActionButton {
+  height: 3.5em; background: transparent; border-radius: var(--rounding);
+} */
+
+/* --------------------------
+   DETAILSEITE (Item Page)
+   -------------------------- */
+#itemDetailPage, .jf-item-page, .detailPageContent, .detailPageSecondaryContainer {
+  background: transparent !important; color: var(--theme-text);
+}
+div#itemDetailPage { background: #181818; overflow-x: hidden; }
+
+/* Backdrop + Verlauf */
+/* #itemBackdrop, div#itemBackdrop {
+  height: 100% !important; z-index: 0; position: absolute;
+  background-position: center center; width: 100%;
+  background-size: cover; background-attachment: scroll;
+} */
+div#itemBackdrop::after {
+/*   content: ""; position: absolute; inset: 0; */
+  background: linear-gradient(to top, #181819 0, rgba(24,24,24,0) 20%), rgba(24,24,24,.35) !important;
+}
+div#itemBackdrop::before {
+/*   content: ""; top: 0; bottom: 0; right: -200px; left: 0; width: 35%;
+  min-width: 500px; max-width: 800px; position: absolute; */
+  background: linear-gradient(to right, #181818 10%, rgba(24,24,24,.0) 100%);
+}
+
+/* Primärbereich / Texte */
+/* .detailPagePrimaryContent, .jf-item-primary {
+  position: relative; width: 50%; padding-left: 1rem; background: transparent;
+  padding-bottom: 5rem; min-height: 42vh; text-shadow: 1px 1px 5px #181818;
+} */
+/* .layout-mobile .detailPagePrimaryContent, .layout-mobile .jf-item-primary { width: 100%; padding: 0; }
+.itemName.parentNameLast, .jf-item-title { margin: 0; font-size: 3rem; } */
+
+/* Buttons auf der Detailseite */
+#itemDetailPage .button-flat:hover { color: var(--accent); transform: scale(1.5); }
+
+/* Episoden-Liste als Grid (responsiv) */
+#itemDetailPage .vertical-list {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  padding: 0 6px !important; margin: -6px; width: calc(100% - 6px);
+}
+@media (max-width: 1291px) { #itemDetailPage .vertical-list { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 991px)  { #itemDetailPage .vertical-list { grid-template-columns: repeat(2, 1fr); } }
+.layout-mobile #itemDetailPage .vertical-list { grid-template-columns: 100%; }
+
+/* Listen-Karten / Thumbs */
+.listItem-withContentWrapper {
+  transition: none; max-width: 100%; margin: 6px; border-radius: var(--rounding);
+  overflow: hidden; padding: 0;
+}
+.listItemImage.listItemImage-large { height: 14rem; width: 100%; padding: 0 !important; margin: 0 !important; border-radius: 0 !important; }
+.listItem-overview { font-size: 12px !important; line-height: 18px; font-weight: 400 !important; color: var(--theme-muted) !important; }
+.listItemBodyText { margin: 0 !important; font-size: 16px; font-weight: 700; }
+
+/* --------------------------
+   PLAYER / OSD
+   -------------------------- */
+/* #videoOsdPage, .jf-video-osd { overflow: hidden !important; margin-top: 0 !important; }
+.videoOsdBottom { font-size: 110%; }
+.osdHeader {
+  background: linear-gradient(180deg, rgba(16,16,16,.75), rgba(16,16,16,0)) !important;
+}
+.layout-desktop .osdControls { max-width: 100%; }
+.sliderBubble { background: var(--deftraback) !important; border-radius: 10px; } */
+
+/* Untertitel (Netflix Sans Medium-Optik) */
+/* .videoSubtitles,
+video::-webkit-media-text-track-display,
+video::-webkit-media-text-track-container,
+video:cue {
+  font-family: "Netflix Sans", sans-serif !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 .2em rgba(0,0,0,1) !important;
+} */
+
+/* Up Next */
+/* .upNextDialog {
+  -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px);
+  box-shadow: 0 0 8px 5px black;
+}
+.upNextDialog-poster-img { border-radius: var(--rounding); } */
+
+/* --------------------------
+   LOGIN-SEITE
+   -------------------------- */
+#loginPage { 
+  margin-top: 0 !important;
+  background:
+    linear-gradient(to top, rgba(0,0,0,.75), transparent 20%),
+    linear-gradient(to bottom, rgba(0,0,0,.75), transparent 20%),
+    linear-gradient(to left, rgba(0,0,0,.75), transparent 20%),
+    linear-gradient(to right, rgba(0,0,0,.75), transparent 20%),
+    url(https://assets.nflxext.com/ffe/siteui/vlv3/92bb3a0b-7e91-40a0-b27b-f2c3ac9ef6e4/3823cff1-a0ce-4532-b99a-d47d99df9599/US-en-20210322-popsignuptwoweeks-perspective_alpha_website_large.jpg) !important;
+  background-size: cover !important;
+}
+#loginPage h1 { font-weight: 700; font-size: 0; margin: 32px 0 21.44px; }
+#loginPage h1::after { content: "Sign In"; font-size: 32px; }
+#loginPage .padded-left.padded-right.padded-bottom-page {
+  background: #000000bf; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%); margin: 0; border-radius: 10px;
+}
+@media all and (max-width: 100em) and (orientation: portrait) {
+  #loginPage .padded-left.padded-right.padded-bottom-page {
+    width: -webkit-fill-available !important; height: fit-content !important;
+  }
+}
+#loginPage .squareCard { width: 50% !important; } /* Altes Layout Fallback */
+
+/* --------------------------
+   DIALOGE / DRAWER / MENÜ
+   -------------------------- */
+.dialog {
+  background-color: rgba(0,0,0,.4);
+  backdrop-filter: blur(60px) !important; -webkit-backdrop-filter: blur(60px) !important;
+  box-shadow: 0 0 0 2000vw rgb(0 0 0 / 45%), 0 0 20px 4px black;
+/*   border-radius: var(--rounding) !important; */
+}
+.actionSheetMenuItem:hover { background: var(--deftraback) !important; }
+.mainDrawer.drawer-open {
+  box-shadow: none !important; padding-right: 50%;
+  background: linear-gradient(90deg, black 15%, transparent);
+}
+/* .navMenuOption {
+  border-right: .5em solid transparent !important; border-radius: var(--rounding) !important;
+} */
+.navMenuOption:hover { background: var(--deftraback) !important; border-right-color: var(--accent) !important; }
+.navMenuOption-selected { background: var(--accent) !important; }
+
+/* --------------------------
+   KLEINKRAM / ABRUNDUNGEN
+   -------------------------- */
+/* .formDialogHeader, .formDialogFooter,
+.toast, .paperList, .sessionNowPlayingInnerContent, .fab, .multiSelectCheckboxOutline,
+.itemSelectionPanel, .cardContent-button, .cardContent-shadow, .itemDetailImage,
+.cardOverlayButton-hover, .listItemButton, .headerButton, .innerCardFooter, .blurhash-canvas,
+.checkboxOutline, .chapterThumbTextContainer, .chapterThumbContainer, .chapterThumb,
+.cardOverlayButtonIcon, .subtitleappearance-preview.flex.align-items-center.justify-content-center,
+.listItemIcon, .listItem-border, .listItemImage, .listItemImageButton {
+  border-radius: var(--rounding) !important;
+} */
+
+/* Schatten & Effekte */
+.listItem.listItem-border    { transition: border-color .2s, background .2s; }
+.listItem.listItem-border:hover { border-color: transparent !important; background: #3f3f3f; }
+.listItem:hover { background: black; }
+
+/* --------------------------
+   BACKDROP / HINTERGRUND
+   -------------------------- */
+.backgroundContainer { background-color: #101010; }
+.backgroundContainer.withBackdrop {
+  background-image:
+    linear-gradient(to top, #181818, transparent, #181818 calc(100% - 4em)),
+    url(https://i.imgur.com/REuCzPK.png) !important;
+  opacity: 1; z-index: -1; background-color: transparent;
+}
+.backdropImage {
+  -webkit-filter: blur(25px) saturate(135%) contrast(110%) brightness(35%);
+  filter: blur(25px) saturate(135%) contrast(110%) brightness(35%);
+}
+
+/* --------------------------
+   ACCESSIBILITY / NO-BLUR Fallbacks
+   -------------------------- */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .videoOsdBottom, .osdHeader, .dialog, .mainDrawer {
+    background-color: rgba(0,0,0,.95) !important;
+  }
+  .dialogBackdropOpened { opacity: 1 !important; background: rgba(0,0,0,.1); }
+  .playerStats { background: rgba(28,28,28,.8); box-shadow: 0 0 8px black !important; }
+}
+
+/* --------------------------
+   MOBILE / RESPONSIVE
+   -------------------------- */
+/* .layout-mobile .detailPagePrimaryContent { width: 100%; padding: 0; }
+.layout-mobile .mainDetailButtons { z-index: 1; margin: 0 -0.5em; }
+.layout-mobile .infoText { z-index: 1; margin-top: 29rem; }
+.layout-mobile .primaryImageWrapper > img {
+  min-width: 100%; position: absolute; left: 0; top: 0; z-index: -1;
+  object-fit: cover; filter: brightness(65%);
+}
+.primaryImageWrapper::before {
+  content: ""; display: block; position: absolute; inset: 0;
+  background: linear-gradient(to top, #181818 30%, transparent);
+}
+@media (max-width: 769px) and (min-width: 425px) {
+  .layout-mobile .infoText { margin-top: 24rem; }
+  .primaryImageWrapper::before { background: linear-gradient(to top, #181818 20%, transparent); }
+}
+@media (max-width: 62.5em) {
+  .detailPageSecondaryContainer { margin-top: -0.5px; }
+}
+@media all and (min-width: 32em) and (max-width: 100em) and (orientation: landscape) {
+  .layout-mobile .detailPageSecondaryContainer { margin: 0; }
+  .detailPagePrimaryContent { width: 55%; }
+  .detailPagePrimaryContainer.padded-left.padded-right.detailRibbon { padding-top: 15rem !important; }
+} */
+
+/* --------------------------
+   ADMIN / DASHBOARD
+   -------------------------- */
+.paperList, .visualCardBox {
+  background-color: #000;
+/*   border-radius: var(--rounding); */
+}
+.listItemIcon { 
+/*   border-radius: var(--rounding) !important;  */
+  color: var(--accent); 
+  background: transparent !important; 
+}
+.listItem-border { border-color: transparent !important; }
+/* .headerButton.headerButtonRight.paper-icon-button-light.headerUserButtonRound {
+  border-radius: var(--rounding) !important;
+} */
+
+/* --------------------------
+   SONSTIGES
+   -------------------------- */
+.button-link { color: #fff !important; }
+.defaultCardBackground { background: var(--deftraback) !important; }
+.tmla-mask, .dialogBackdrop { background-color: transparent; }
+
+/* Ende */
