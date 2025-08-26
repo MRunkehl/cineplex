@@ -19,7 +19,7 @@
 }
 
 .slide,
-.slide * {
+.slide *:not(.play-text) {
   text-shadow: 0 0px 3px rgba(0, 0, 0, 2);
 }
 
@@ -505,15 +505,18 @@ a.slide .plot-container .plot {
   min-width: auto;
   width: auto;
   height: var(--button-icon-only-size);
-  background-color: var(--button-bg-play) !important;
+  background-color: #ffffff;
+  color: #000000;
   border-radius: var(--theme-roundness) !important;
+  text-shadow: none;
 }
 
 /* Hover states for buttons in .button-container */
 .button-container .favorite-button:hover,
-.button-container .detail-button:hover,
-.button-container .play-button:hover {
-  background-color: var(--button-bg-subtle-hover) !important;
+.button-container .detail-button:hover {
+  background-color: var(--button-bg-subtle-hover) !important;;
+  color: #e50914;
+  text-shadow: none;
   opacity: 1;
 }
 .play-button:hover,
@@ -521,6 +524,9 @@ a.slide .plot-container .plot {
 .favorite-button:hover {
   opacity: 0.8;
 }
+.play-button:hover {
+  color: #ffffff;
+  background-color: #e50914;
 
 
 /* Button Icons (::before pseudo-elements) */
@@ -577,7 +583,10 @@ a.slide .plot-container .plot {
 }
 
 #slideshow-pause-button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--button-bg-subtle-hover) !important;;
+  color: #e50914;
+  text-shadow: none;
+  opacity: 0.8;
 }
 
 #slideshow-pause-button .material-icons {
@@ -832,3 +841,4 @@ a.slide .plot-container .plot {
     left: auto;
   }
 }
+
