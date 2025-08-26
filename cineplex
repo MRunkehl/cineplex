@@ -1,0 +1,354 @@
+/* =========================================================
+   Cineplex (Netflix-like)
+   Compatible: v10.10.7 and higher
+   Author: Maverick Runkehl
+   ========================================================= */
+
+/* --------------------------
+   Import finity complete theme
+   -------------------------- */
+@import url("https://cdn.jsdelivr.net/gh/prism2001/finity@main/complete/finity-complete.css");
+
+
+/* --------------------------
+   Design-Variablen
+   -------------------------- */
+:root {
+  --accent: #e50914;
+  --deftraback: rgba(229, 9, 20, 0.2);
+  --rounding: 6px;
+  --focus-color: #e50914;
+
+  /* Zusätzliche systemweite Farben (10.10 nutzt häufig vars) */
+  --theme-accent: var(--accent);
+  --theme-primary: #ffffff;
+  --theme-text: #e5e5e5;
+  --theme-muted: #a3a3a3;
+  --theme-bg: #181818;
+  --theme-elev: rgba(0,0,0,.25);
+  --theme-elev-strong: rgba(0,0,0,.75);
+}
+
+/* Highlight / Selection */
+::-moz-selection { background: var(--accent); text-shadow: none; }
+::selection       { background: var(--accent); text-shadow: none; }
+
+/* --------------------------
+   GLOBAL / TYPO
+   -------------------------- */
+
+/* Netflix Sans Einbindung */
+@font-face {
+  font-family: "Netflix Sans"; font-weight: 100;
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff2) format("woff2"),
+       url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Th.woff) format("woff");
+}
+@font-face {
+  font-family: "Netflix Sans"; font-weight: 300;
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff2) format("woff2"),
+       url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Lt.woff) format("woff");
+}
+@font-face {
+  font-family: "Netflix Sans"; font-weight: 400;
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff2) format("woff2"),
+       url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Rg.woff) format("woff");
+}
+@font-face {
+  font-family: "Netflix Sans"; font-weight: 700;
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff2) format("woff2"),
+       url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Md.woff) format("woff");
+}
+@font-face {
+  font-family: "Netflix Sans"; font-weight: 800;
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff2) format("woff2"),
+       url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Bd.woff) format("woff");
+}
+@font-face {
+  font-family: "Netflix Sans"; font-weight: 900;
+  src: url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff2) format("woff2"),
+       url(https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff) format("woff");
+}
+
+body, h1, h2, h3, h4 {
+  font-family: "Netflix Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif !important;
+  color: var(--theme-text);
+  // background: var(--theme-bg);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar-thumb { background: var(--accent) !important; }
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece { background: transparent !important; }
+* {
+  scrollbar-color: var(--accent) var(--thene-bg) !important;
+}
+
+/* --------------------------
+   BRANDING
+   -------------------------- */
+.adminDrawerLogo img {
+  content: url('https://raw.githubusercontent.com/MRunkehl/zyraflix/main/Cineplex-Logo.png') !important;
+}
+
+imgLogoIcon {
+  content: url('https://raw.githubusercontent.com/MRunkehl/zyraflix/main/Cineplex-Logo.png') !important;
+}
+  
+.pageTitleWithLogo {
+  background-image: url('https://raw.githubusercontent.com/MRunkehl/zyraflix/main/Cineplex-Logo.png') !important;
+}
+
+/* --------------------------
+   HEADER / NAV / TOPBAR
+   -------------------------- */
+/* neue 10.10 Header-Hintergründe möglichst transparent */
+.skinHeader-withBackground,
+.skinHeader.focuscontainer-x.skinHeader-withBackground.skinHeader-blurred,
+.skinHeader.focuscontainer-x.skinHeader-withBackground.skinHeader-blurred.noHomeButtonHeader {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+.emby-tab-button:hover,
+.jf-tab:hover,
+.jf-tab[aria-selected="true"],
+button.emby-tab-button.emby-button.emby-tab-button-active:hover {
+  color: var(--accent) !important;
+}
+
+/* --------------------------
+   BUTTONS / INPUTS
+   -------------------------- */
+.jf-btn--raised, .raised, a.raised.homeLibraryButton.emby-button {
+  background: var(--accent) !important;
+  /*border-radius: var(--rounding) !important;
+  box-shadow: 0 0 9px #000;*/
+}
+.paper-icon-button-light:hover:not(:disabled),
+.button-flat:hover {
+  color: var(--accent) !important;
+  background-color: #2020208c;
+/*   box-shadow: 0 0 15px -2px black; */
+}
+
+/* Checkboxen / Toggles / Progress */
+.emby-checkbox:checked + span + .checkboxOutline,
+.itemProgressBarForeground,
+.mdl-slider-background-lower,
+.jf-toggle[aria-checked="true"] {
+  background-color: var(--accent) !important;
+}
+.emby-checkbox:checked + span + .checkboxOutline { border-color: var(--accent) !important; }
+
+/* --------------------------
+   CARDS / GRIDS / LISTEN
+   -------------------------- */
+
+
+/* --------------------------
+   STARTSEITE / „My Media“
+   -------------------------- */
+
+
+/* --------------------------
+   DETAILSEITE (Item Page)
+   -------------------------- */
+.mainDetailButtons {
+  left: 0px;
+}
+.btnPlay, .play-button {
+  color: #000000;
+  background: #ffffff;
+}
+.btnPlay:hover, .play-button:hover {
+  color: #ffffff !important;
+  background: var(--accent);
+}
+
+.detailSection {
+  margin-top: .6em;
+}
+
+#itemDetailPage .tagline {
+    border-left: 0.25em solid #ffffff;
+    padding: 0 0.5em;
+    font-weight: 600;
+}
+
+.layout-desktop .trackSelections .selectContainer .detailTrackSelect {
+  width: auto;
+}
+
+.emby-select-withcolor, select:enabled {
+  color: inherit;
+  background: #fff0;
+  border: #fff0;
+  border-style: none;
+}
+
+.emby-select-withcolor:focus {
+  border-color: var(--focus-color);
+}
+.inputLabelFocused, selectionLabelFocused, .textAreaLabelFocused {
+  color: var(--focus-color);
+}
+
+.trackSelections .selectContainer .selectArrowContainer .selectArrow {
+  margin-top: 4px;
+}
+.selectArrowContainer {
+  position: relative;
+  top: 0em;
+}
+  
+.emby-input, .emby-textarea, .emby-select, .selectLabel {
+  padding-inline: calc(0.8em - 7px) !important;
+}
+.selectArrow {
+  margin-top: 1.1em;
+}
+
+.itemExternalLinks.focuscontainer-x {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff0 !important;
+  margin: 1.5em 0 !important;
+}
+
+/* Round styled actors */
+/* Shrink and square (or round) cast thumbnails */
+#castContent .card.overflowPortraitCard.personCard.card-hoverable.card-withuserdata {width: 4.2cm !important; font-size: 90% !important;}
+#castContent .card.overflowPortraitCard.personCard.card-withuserdata {width: 4.2cm !important; font-size: 90% !important;}
+/* Correct image aspect ratio behavior, set border-radius to zero for square tiles */
+#castContent .cardContent-button.cardImageContainer.coveredImage.cardContent.cardContent-shadow.itemAction.lazy {background-size: cover; !important; border-radius: 10cm;}
+#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground1.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 10cm;}
+#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground2.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 10cm;}
+#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground3.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 10cm;}
+#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground4.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 10cm;}
+#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground5.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 10cm;}
+#castContent .cardScalable {width: 3.8cm !important; height: 3.8cm !important; border-radius: 10cm;}
+#castContent .cardOverlayContainer.itemAction {border-radius: 10cm;}
+/* Center the mouseover buttons */
+#castContent .cardOverlayButton-br {bottom: 4%; right: 15%; width: 70%;}
+#castContent .cardOverlayButton.cardOverlayButton-hover.itemAction.paper-icon-button-light {margin:auto;}
+/* Correctly set roundness / results in also changing movie cards */
+// .cardOverlayContainer, .cardContent:not(.dashboardSection .cardContent), .cardPadder:not(.dashboardSection .cardPadder), .blurhash-canvas {
+//     border-radius: 10em !important;
+// }
+
+/* --------------------------
+   PLAYER / OSD
+   -------------------------- */
+
+/* --------------------------
+   LOGIN-SEITE
+   -------------------------- */
+#loginPage h1 {
+  display: none;
+}
+#loginPage .padded-left.padded-right.padded-bottom-page {
+  margin-top: 10px;
+}
+// body:has(#loginPage:not(.hide)) .skinHeader {
+//   display: none !important;
+// }
+body:has(#loginPage:not(.hide)) {
+  overflow: hidden !important;
+}
+body:not(:has(#loginPage:not(.hide))) .skinHeader {
+  display: flex !important;
+}
+#loginPage .readOnlyContent,
+#loginPage form {
+  max-width: 22em;
+}
+#loginPage .padded-left.padded-right.padded-bottom-page {
+  margin-top: 4em !important;
+  margin-left: auto;
+  margin-right: auto;
+  backdrop-filter: blur(1px);
+  border-radius: var(--rounding-large);
+  overflow: auto;
+}
+#loginPage .squareCard {
+  width: 33%;
+}
+#loginPage form {
+  padding-top: 2em;
+}
+#loginPage .sectionTitle {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 1.2em !important;
+}
+#loginPage .pageTitleWithDefaultLogo,
+.layout-mobile .detailImageContainer .card.portraitCard {
+  // display: none !important;
+}
+#loginPage {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.5)), 
+    url('https://raw.githubusercontent.com/MRunkehl/zyraflix/main/Cineplex-Poster-bg.jpg');
+  // background-image: linear-gradient(rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.5)),
+  //   url(https://cdn.jsdelivr.net/gh/MakD/zombie-release@main/img/loginImg/login.jpg);
+  background-position: top left;
+  background-size: cover;
+  background-attachment: fixed;
+  animation: 150s infinite alternate backgroundAnimation;
+  z-index: 2;
+  overflow: hidden;
+}
+/* Blur-Overlay */
+#loginPage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: blur(8px);
+  transform: scale(1.05);
+  z-index: -1;
+}
+
+#loginPage .raised.cancel.block.btnForgotPassword.emby-button {
+  display: none;
+}
+div#loginPage {
+  margin-top: 0 !important;
+}
+.manualLoginForm {
+  height: 100%;
+  width: 100%;
+}
+
+/* --------------------------
+   DIALOGE / DRAWER / MENÜ
+   -------------------------- */
+
+
+/* --------------------------
+   BACKDROP / HINTERGRUND
+   -------------------------- */
+
+
+/* --------------------------
+   ACCESSIBILITY / NO-BLUR Fallbacks
+   -------------------------- */
+
+
+/* --------------------------
+   MOBILE / RESPONSIVE
+   -------------------------- */
+
+
+/* --------------------------
+   ADMIN / DASHBOARD
+   -------------------------- */
+
+
+/* --------------------------
+   SONSTIGES
+   -------------------------- */
+
+/* END */
