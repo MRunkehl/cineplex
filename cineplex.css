@@ -140,6 +140,11 @@ button.emby-tab-button.emby-button.emby-tab-button-active:hover {
 }
 .emby-checkbox:checked + span + .checkboxOutline { border-color: var(--accent) !important; }
 
+/* Slider Thumb */
+.mdl-slider::-webkit-slider-thumb { background: var(--accent); border-radius: var(--rounding); }
+.mdl-slider::-moz-range-thumb,
+.mdl-slider::-ms-thumb { background: var(--accent); border-radius: var(--rounding); }
+
 /* --------------------------
    CARDS / GRIDS / LISTEN
    -------------------------- */
@@ -240,6 +245,31 @@ button.emby-tab-button.emby-button.emby-tab-button-active:hover {
 /* --------------------------
    PLAYER / OSD
    -------------------------- */
+#videoOsdPage, .jf-video-osd { overflow: hidden !important; margin-top: 0 !important; }
+.videoOsdBottom { font-size: 110%; }
+.osdHeader {
+  background: linear-gradient(180deg, rgba(16,16,16,.75), rgba(16,16,16,0)) !important;
+}
+.layout-desktop .osdControls { max-width: 100%; }
+.sliderBubble { background: var(--deftraback) !important; border-radius: 10px; }
+
+/* Untertitel (Netflix Sans Medium-Optik) */
+.videoSubtitles,
+video::-webkit-media-text-track-display,
+video::-webkit-media-text-track-container,
+video:cue {
+  font-family: "Netflix Sans", sans-serif !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 .2em rgba(0,0,0,1) !important;
+}
+
+/* Up Next */
+.upNextDialog {
+  -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px);
+  box-shadow: 0 0 8px 5px black;
+}
+.upNextDialog-poster-img { border-radius: var(--rounding); }
+
 
 /* --------------------------
    LOGIN-SEITE
