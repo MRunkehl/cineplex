@@ -437,7 +437,7 @@ a.slide .plot-container .plot {
 .button-container button {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-radius: var(--theme-roundness);
   background-color: var(--button-bg-subtle);
   color: var(--theme-text-color);
@@ -503,7 +503,7 @@ a.slide .plot-container .plot {
   padding: var(--button-play-padding);
   gap: 0rem;
   min-width: auto;
-  width: auto;
+  width: 160px;
   height: var(--button-icon-only-size);
   background-color: #ffffff;
   color: #000000;
@@ -546,6 +546,19 @@ a.slide .plot-container .plot {
 .play-button::before {
   content: "play_arrow";
   margin-right: 0.5rem;
+}
+
+.play-text {
+  visibility: hidden;      /* alten Text unsichtbar machen */
+  position: relative;
+}
+
+.play-text::after {
+  content: "Abspielen";    /* neuer Text */
+  visibility: visible;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .detail-button::before {
@@ -638,6 +651,19 @@ a.slide .plot-container .plot {
   justify-content: center;
   flex-wrap: wrap;
   align-content: center;
+}
+
+.play-text {
+  visibility: hidden; 
+  position: relative;
+}
+
+.play-text::after {
+  content: "Abspielen";
+  visibility: visible;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .tomato-rating {
@@ -842,4 +868,5 @@ a.slide .plot-container .plot {
     left: auto;
   }
 }
+
 
