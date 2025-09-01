@@ -170,6 +170,16 @@ button.emby-tab-button.emby-button.emby-tab-button-active:hover {
   background: var(--accent);
 }
 
+/* Change play button label and width */
+.button-flat.btnPlay.detailButton.emby-button, .material-icons.detailButton-icon.play_arrow {
+    width: 135px;
+    border-radius: var(--theme-roundness);
+}
+.mainDetailButtons .material-icons.play_arrow::after {
+    content: "Abspielen";
+    font-weight: 700;
+}
+
 .detailSection {
   margin-top: .6em;
 }
@@ -252,6 +262,13 @@ button.emby-tab-button.emby-button.emby-tab-button-active:hover {
 }
 .layout-desktop .osdControls { max-width: 100%; }
 .sliderBubble { background: var(--deftraback) !important; border-radius: 10px; }
+
+.mdl-slider {
+   color: var(--accent);
+}
+.sliderMarker.watched {
+    background-color: var(--accent);
+}
 
 /* Untertitel (Netflix Sans Medium-Optik) */
 .videoSubtitles,
