@@ -126,7 +126,7 @@
 
 .progress-bar {
   height: 5px;
-  background: white;
+  background: #e50914;
   border-radius: 2px;
   transition: width 0.2s ease-in-out;
 }
@@ -869,6 +869,7 @@ a.slide .plot-container .plot {
     left: auto;
   }
 }
+
 
 
 
