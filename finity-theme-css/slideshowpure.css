@@ -437,7 +437,7 @@ a.slide .plot-container .plot {
 .button-container button {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   border-radius: var(--theme-roundness);
   background-color: var(--button-bg-subtle);
   color: var(--theme-text-color);
@@ -501,6 +501,7 @@ a.slide .plot-container .plot {
 
 .button-container .play-button {
   padding: var(--button-play-padding);
+  justify-content: center;
   gap: 0rem;
   min-width: auto;
   width: 160px;
@@ -868,5 +869,6 @@ a.slide .plot-container .plot {
     left: auto;
   }
 }
+
 
 
