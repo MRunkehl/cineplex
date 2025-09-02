@@ -318,12 +318,9 @@ body > div.skinHeader.focuscontainer-x.skinHeader-withBackground.skinHeader-blur
   backdrop-filter: var(--blur-effect);
   background-color: var(--theme-black-alpha-med);
   border-radius: var(--theme-roundness-progress);
-  margin-bottom: 10px;
-  margin-left: 20px;
   overflow: hidden;
-  padding: 3px;
+  padding: 1px;
   position: relative;
-  right: 10px;
 }
 
 .itemProgressBarForeground {
@@ -1221,3 +1218,4 @@ option {
 	-webkit-backdrop-filter: unset !important;
 	background-color: transparent !important;
 }
+
