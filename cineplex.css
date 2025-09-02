@@ -131,6 +131,16 @@ button.emby-tab-button.emby-button.emby-tab-button-active:hover {
 /*   box-shadow: 0 0 15px -2px black; */
 }
 
+/* on overview page */
+.btnRefresh {
+    background-color: #ffffff !important;
+    color: #000000;
+}
+#btnRestart, #btnShutdown {
+   background-color: var(--accent) !important;
+}
+
+
 /* Checkboxen / Toggles / Progress */
 .emby-checkbox:checked + span + .checkboxOutline,
 .mdl-slider-background-lower,
