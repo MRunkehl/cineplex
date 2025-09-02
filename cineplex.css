@@ -80,7 +80,7 @@ body, h1, h2, h3, h4 {
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-track-piece { background: transparent !important; }
 * {
-  scrollbar-color: var(--accent) var(--thene-bg) !important;
+  scrollbar-color: var(--accent) var(--theme-bg) !important;
 }
 
 /* --------------------------
@@ -133,12 +133,15 @@ button.emby-tab-button.emby-button.emby-tab-button-active:hover {
 
 /* Checkboxen / Toggles / Progress */
 .emby-checkbox:checked + span + .checkboxOutline,
-.itemProgressBarForeground,
 .mdl-slider-background-lower,
 .jf-toggle[aria-checked="true"] {
   background-color: var(--accent) !important;
 }
 .emby-checkbox:checked + span + .checkboxOutline { border-color: var(--accent) !important; }
+
+.itemProgressBarForeground {
+   background: linear-gradient(90deg,rgba(87, 4, 4, 1) 0%, rgba(229, 9, 20, 1) 100%) !important;
+}
 
 /* Slider Thumb */
 .mdl-slider::-webkit-slider-thumb { background: var(--accent); border-radius: var(--rounding); }
@@ -245,7 +248,7 @@ button.emby-tab-button.emby-button.emby-tab-button-active:hover {
 #castContent .cardScalable {width: 3.8cm !important; height: 3.8cm !important; border-radius: 10cm;}
 #castContent .cardOverlayContainer.itemAction {border-radius: 10cm;}
 /* Center the mouseover buttons */
-#castContent .cardOverlayButton-br {bottom: 4%; right: 15%; width: 70%;}
+#castContent .cardOverlayButton-br {bottom: 4%; right: 15%;}
 #castContent .cardOverlayButton.cardOverlayButton-hover.itemAction.paper-icon-button-light {margin:auto;}
 /* Correctly set roundness / results in also changing movie cards */
 // .cardOverlayContainer, .cardContent:not(.dashboardSection .cardContent), .cardPadder:not(.dashboardSection .cardPadder), .blurhash-canvas {
@@ -262,6 +265,10 @@ button.emby-tab-button.emby-button.emby-tab-button-active:hover {
 }
 .layout-desktop .osdControls { max-width: 100%; }
 .sliderBubble { background: var(--deftraback) !important; border-radius: 10px; }
+
+.mdl-spinner__layer {
+   border-color: var(--accent);
+}
 
 .mdl-slider {
    color: var(--accent);
