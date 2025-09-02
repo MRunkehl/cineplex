@@ -501,7 +501,7 @@ a.slide .plot-container .plot {
 
 .button-container .play-button {
   padding: var(--button-play-padding);
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0rem;
   min-width: auto;
   width: 160px;
@@ -869,6 +869,7 @@ a.slide .plot-container .plot {
     left: auto;
   }
 }
+
 
 
 
