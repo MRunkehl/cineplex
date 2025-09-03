@@ -1019,10 +1019,10 @@ video.htmlvideoplayer::cue {
   margin-left: var(--overflow-card-margin-left);
 }
 
-.overflowPortraitCard,
-.overflowSquareCard { /* Portrait and square cards in sliders */
+/* .overflowPortraitCard,
+.overflowSquareCard { /* Portrait and square cards in sliders *//*
   width: var(--overflow-portrait-width);
-}
+} */
 
 .overflowBackdropCard,
 .overflowSmallBackdropCard { /* Backdrop cards in sliders */
@@ -1218,4 +1218,5 @@ option {
 	-webkit-backdrop-filter: unset !important;
 	background-color: transparent !important;
 }
+
 
