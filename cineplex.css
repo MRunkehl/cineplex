@@ -7,7 +7,7 @@
 /* --------------------------
    Import finity complete theme
    -------------------------- */
-@import url("https://cdn.jsdelivr.net/gh/prism2001/finity@main/complete/finity-complete.css");
+@import url("https://cdn.jsdelivr.net/gh/MRunkehl/cineplex@v1.0.3/finity-theme-css/finity-complete.css");
 
 
 /* --------------------------
@@ -250,13 +250,13 @@ button.emby-tab-button.emby-button.emby-tab-button-active:hover {
 #castContent .card.overflowPortraitCard.personCard.card-withuserdata {width: 4.2cm !important; font-size: 90% !important;}
 /* Correct image aspect ratio behavior, set border-radius to zero for square tiles */
 #castContent .cardContent-button.cardImageContainer.coveredImage.cardContent.cardContent-shadow.itemAction.lazy {background-size: cover; !important; border-radius: 10cm;}
-#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground1.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 10cm;}
-#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground2.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 10cm;}
-#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground3.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 10cm;}
-#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground4.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 10cm;}
-#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground5.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 10cm;}
-#castContent .cardScalable {width: 3.8cm !important; height: 3.8cm !important; border-radius: 10cm;}
-#castContent .cardOverlayContainer.itemAction {border-radius: 10cm;}
+#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground1.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 50% !important;}
+#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground2.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 50% !important;}
+#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground3.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 50% !important;}
+#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground4.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 50% !important;}
+#castContent .cardContent-button.cardImageContainer.coveredImage.defaultCardBackground.defaultCardBackground5.cardContent.cardContent-shadow.itemAction {background-size: cover; !important; border-radius: 50% !important;}
+#castContent .cardScalable {width: 3.8cm !important; height: 3.8cm !important; border-radius: 50% !important;}
+#castContent .cardOverlayContainer.itemAction {border-radius: 50% !important;}
 /* Center the mouseover buttons */
 #castContent .cardOverlayButton-br {bottom: 4%; right: 15%;}
 #castContent .cardOverlayButton.cardOverlayButton-hover.itemAction.paper-icon-button-light {margin:auto;}
