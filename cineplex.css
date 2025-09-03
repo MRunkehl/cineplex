@@ -15,6 +15,9 @@
    -------------------------- */
 :root {
   --accent: #e50914;
+  --accent-transparent: rgba(229, 9, 20, 0.2);
+  --accent-darker: #c40811;
+  --accent-dark: #96060d;
   --deftraback: rgba(229, 9, 20, 0.2);
   --rounding: 6px;
   --focus-color: #e50914;
@@ -409,6 +412,30 @@ div#loginPage {
 /* --------------------------
    ADMIN / DASHBOARD
    -------------------------- */
+
+   .listItemIcon:not(.listItemIcon-transparent) {
+      background-color: var(--accent) !important;
+   }
+
+   .button-link {
+      color: var(--accent) !important;
+   }
+
+   .css-17c09up.Mui-selected {
+      background-color: var(--accent-transparent);
+   }
+
+   .defaultCardBackground1 {
+      background-color: var(--accent-dark);
+   }
+
+   .defaultCardBackground2 {
+      background-color: var(--accent-darker);
+   }
+
+   .defaultCardBackground3 {
+      background-color: var(--accent);
+   }
 
 
 /* --------------------------
