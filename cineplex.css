@@ -15,7 +15,8 @@
    -------------------------- */
 :root {
   --accent: #e50914;
-  --accent-transparent: rgba(229, 9, 20, 0.2);
+  --accent-transparent-1: rgba(229, 9, 20, 0.1);
+  --accent-transparent-2: rgba(229, 9, 20, 0.2);
   --accent-darker: #c40811;
   --accent-dark: #96060d;
   --deftraback: rgba(229, 9, 20, 0.2);
@@ -123,15 +124,15 @@ h4 {
    BRANDING
    -------------------------- */
 .adminDrawerLogo img {
-  content: url("https://raw.githubusercontent.com/MRunkehl/zyraflix/main/Cineplex-Logo.png") !important;
+  content: url("https://raw.githubusercontent.com/MRunkehl/cineplex/main/rebranding/Cineplex-Logo.png") !important;
 }
 
 imgLogoIcon {
-  content: url("https://raw.githubusercontent.com/MRunkehl/zyraflix/main/Cineplex-Logo.png") !important;
+  content: url("https://raw.githubusercontent.com/MRunkehl/cineplex/main/rebranding/Cineplex-Logo.png") !important;
 }
 
 .pageTitleWithLogo {
-  background-image: url("https://raw.githubusercontent.com/MRunkehl/zyraflix/main/Cineplex-Logo.png") !important;
+  background-image: url("https://raw.githubusercontent.com/MRunkehl/cineplex/main/rebranding/Cineplex-Logo.png") !important;
 }
 
 /* --------------------------
@@ -150,6 +151,15 @@ imgLogoIcon {
 .jf-tab[aria-selected="true"],
 button.emby-tab-button.emby-button.emby-tab-button-active:hover {
   color: var(--accent) !important;
+}
+
+.emby-button-foreground {
+  text-transform: uppercase;
+}
+.emby-tab-button-acrive {
+  text-decoration-line: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--accent);
 }
 
 /* --------------------------
@@ -242,6 +252,14 @@ a.raised.homeLibraryButton.emby-button {
 .mainDetailButtons .material-icons.play_arrow::after {
   content: "Abspielen";
   font-weight: 700;
+}
+
+button.button-flat.btnReplay.detailButton.emby-button {
+  margin-left: 0.75em !important;
+  margin-right: -0.75em !important;
+}
+button.button-flat.btnPlayTrailer.detailButton.emby-button {
+  margin-left: 0.75em !important;
 }
 
 .detailSection {
@@ -430,7 +448,21 @@ video:cue {
 }
 #loginPage .padded-left.padded-right.padded-bottom-page {
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 }
+
+#loginPage .cardBox-bottompadded {
+  margin-bottom: 0em !important;
+  padding-bottom: 0em !important;
+}
+
+#loginPage .visualLoginForm {
+  width: 23em;
+}
+
 /* body:has(#loginPage:not(.hide)) .skinHeader {
      display: none !important;
    } */
@@ -443,20 +475,21 @@ body:not(:has(#loginPage:not(.hide))) .skinHeader {
 #loginPage .readOnlyContent,
 #loginPage form {
   max-width: 23em; /* 24 probaly better */
+  padding-top: 2em;
 }
 #loginPage .padded-left.padded-right.padded-bottom-page {
-  margin-top: 4em !important;
+  margin-top: 0em !important;
   margin-left: auto;
   margin-right: auto;
   backdrop-filter: blur(1px);
   border-radius: var(--rounding-large);
   overflow: auto;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
 }
 #loginPage .squareCard {
   width: 33%;
-}
-#loginPage form {
-  padding-top: 2em;
 }
 #loginPage .sectionTitle {
   margin-left: auto !important;
@@ -471,7 +504,7 @@ body:not(:has(#loginPage:not(.hide))) .skinHeader {
   width: 100%;
   height: 100%;
   background-image: linear-gradient(rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.5)),
-    url("https://raw.githubusercontent.com/MRunkehl/zyraflix/main/Cineplex-Poster-bg.jpg");
+    url("https://raw.githubusercontent.com/MRunkehl/cineplex/main/rebranding/Cineplex-Poster-bg.jpg");
   background-position: top left;
   background-size: cover;
   background-attachment: fixed;
@@ -497,23 +530,25 @@ div#loginPage {
   margin-top: 0 !important;
 }
 .manualLoginForm {
-  height: 100%;
+  height: auto;
   width: 100%;
+}
+.emby-button.block {
+  margin: 0.5em 0;
 }
 
 /* --------------------------
    DIALOGE / DRAWER / MENÜ
    -------------------------- */
+.listItem:hover {
+  background-color: var(--accent-transparent-1) !important;
+}
 
 /* --------------------------
    BACKDROP / HINTERGRUND
    -------------------------- */
-.backgroundContainer,
-.dialog,
-.nowPlayingPlaylist,
-.nowPlayingContextMenu,
-html {
-  background-color: #101010;
+#moviesPage,
+#tvRecommendedPage {
   background-image: linear-gradient(to bottom, #972121 20%, #000000 100%);
 }
 
@@ -539,9 +574,30 @@ html {
   text-align: left;
 }
 
+.layout-mobile .itemBackdrop {
+  margin-top: 0rem;
+  mask-image: linear-gradient(
+    to top,
+    #fff0 1%,
+    #000000 15%,
+    #000000 80%,
+    #fff0 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to top,
+    #fff0 1%,
+    #000000 15%,
+    #000000 80%,
+    #fff0 100%
+  );
+}
+
 /* could affect all views */
 .material-icons.play_arrow:before {
   margin-left: 10px;
+}
+.mainDetailButtons .material-icons.play_arrow::after {
+  bottom: 13px;
 }
 
 @media (max-width: 62.5em) {
@@ -567,7 +623,10 @@ html {
 }
 
 .css-17c09up.Mui-selected {
-  background-color: var(--accent-transparent);
+  background-color: var(--accent-transparent-2);
+}
+.css-17c09up.Mui-selected:hover {
+  background-color: var(--accent-transparent-1);
 }
 
 .defaultCardBackground1 {
